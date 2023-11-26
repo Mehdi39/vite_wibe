@@ -5,6 +5,7 @@ import { dark } from "./styles/Themes";
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 import Home from "./sections/Home";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const containerRef = useRef();
@@ -26,9 +27,11 @@ function App() {
             ]
           }
         >
-          <main data-scroll-container ref={containerRef}>
-            <Home/>
-          </main>
+          <AnimatePresence>
+            <main data-scroll-container ref={containerRef}>
+              <Home />
+            </main>
+          </AnimatePresence>
         </LocomotiveScrollProvider>
       </ThemeProvider>
     </>
