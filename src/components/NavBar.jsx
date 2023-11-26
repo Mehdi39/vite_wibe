@@ -15,7 +15,7 @@ const NavContainer = styled(motion.div)`
     transition: all 0.3s ease;
 `
 
-const MenuItems = styled.ul`
+const MenuItems = styled(motion.ul)`
     position: relative;
     height: ${props => props.theme.navHeight};
     background-color: ${props => props.theme.body};
@@ -54,7 +54,7 @@ const MenuBtn = styled.li`
     cursor: pointer;
 `
 
-const MenuItem = styled.li`
+const MenuItem = styled(motion.li)`
     text-transform: uppercase;
     color: ${props => props.theme.text}
 `
@@ -68,12 +68,17 @@ const NavBar = () => {
             animate={{ y: 0 }}
             transition={{ duration: 2, delay: 2}}
             >
-            <MenuItems>
+            <MenuItems 
+                drag="y"
+                dragConstraints={{ top: 0, bottom: 70 }}
+                dragElastic={0.05}
+                dragSnapToOrigin
+            >
                 <MenuBtn onClick={() => setClick(!click)}>Menu</MenuBtn>
-                <MenuItem>Home</MenuItem>
-                <MenuItem>About</MenuItem>
-                <MenuItem>Shop</MenuItem>
-                <MenuItem>Contact</MenuItem>
+                <MenuItem whileHover={{scale: 1.1, y: -5}} whileTap={{scale: 0.9, y: 0}}>Home</MenuItem>
+                <MenuItem whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>About</MenuItem>
+                <MenuItem whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>Shop</MenuItem>
+                <MenuItem whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>New Arrival</MenuItem>
             </MenuItems>
             
         </NavContainer>
